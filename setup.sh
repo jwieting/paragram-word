@@ -25,7 +25,5 @@ rm SimLex-999.zip
 
 #download pre-processed PPDB XL training data and word embeddings
 wget http://ttic.uchicago.edu/~wieting/paragram-word-demo.zip
-unzip paragram-word-demo.zip
-mv paragram-word-demo/* .
-rm -Rf paragram-word-demo
+unzip -j paragram-word-demo.zip
 rm paragram-word-demo.zip

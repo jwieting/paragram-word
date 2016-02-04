@@ -33,19 +33,19 @@ np.random.seed(1)
 params = params()
 
 parser = argparse.ArgumentParser()
-parser.add_argument("-LW", help="Regularization parameter on words", type=float)
-parser.add_argument("-outfile", help="Model file name")
-parser.add_argument("-batchsize", help="Size of batch", type=int)
-parser.add_argument("-dim", help="Size of input", type=int)
-parser.add_argument("-wordfile", help="Word embedding file")
-parser.add_argument("-save", help="Whether to pickle the model")
-parser.add_argument("-dataf", help="Training data file")
-parser.add_argument("-margin", help="Margin", type=float)
-parser.add_argument("-samplingtype", help="Type of sampling used")
-parser.add_argument("-evaluate", help="Whether to evaluate the model during training")
-parser.add_argument("-epochs", help="Number of epochs in training", type=int)
-parser.add_argument("-learner", help="Either AdaGrad or Adam")
-parser.add_argument("-num_examples", help="Number of examples", type=int)
+parser.add_argument("-LW", help="Lambda for word embeddings (normal training).", type=float)
+parser.add_argument("-outfile", help="Output file name.")
+parser.add_argument("-batchsize", help="Size of batch.", type=int)
+parser.add_argument("-dim", help="Size of input.", type=int)
+parser.add_argument("-wordfile", help="Word embedding file.")
+parser.add_argument("-save", help="Whether to pickle the model.")
+parser.add_argument("-train", help="Training data file.")
+parser.add_argument("-margin", help="Margin in objective function.", type=float)
+parser.add_argument("-samplingtype", help="Type of sampling used.")
+parser.add_argument("-evaluate", help="Whether to evaluate the model during training.")
+parser.add_argument("-epochs", help="Number of epochs in training.", type=int)
+parser.add_argument("-learner", help="Either AdaGrad or Adam.")
+parser.add_argument("-num_examples", help="Number of examples to use in training. If not set, will use all examples.", type=int)
 
 args = parser.parse_args()
 
@@ -55,7 +55,7 @@ params.batchsize = args.batchsize
 params.dim = args.dim
 params.wordfile = args.wordfile
 params.save = str2bool(args.save)
-params.dataf = args.dataf
+params.train = args.train
 params.margin = args.margin
 params.type = args.samplingtype
 params.epochs = args.epochs
@@ -64,7 +64,7 @@ params.learner = str2learner(args.learner)
 params.learner = lasagne.updates.adagrad
 
 (words, We) = getWordmap(params.wordfile)
-examples = getData(params.dataf, words)
+examples = getData(params.train, words)
 
 if args.num_examples:
     examples = examples[0:args.num_examples]

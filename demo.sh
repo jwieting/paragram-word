@@ -1,1 +1,1 @@
-sh train.sh -wordfile ../data/glove_small.txt -outfile paragram -dim 300 -dataf ../data/ppdb-xl-lexical-preprocessed.txt -save False -evaluate True -epochs 10 -batchsize 50 -LW 1e-09 -margin 0.6 -samplingtype MIX
+sh train.sh -wordfile ../data/glove_small.txt -outfile paragram -dim 300 -train ../data/ppdb-xl-lexical-preprocessed.txt -save False -evaluate True -epochs 10 -batchsize 50 -LW 1e-09 -margin 0.6 -samplingtype MIX

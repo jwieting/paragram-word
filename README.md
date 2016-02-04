@@ -1,10 +1,10 @@
 # paragram-word
 
-Python code to train Paragram word embeddings.
+Code to train Paragram word embeddings from the appendix of "From Paraphrase Database to Compositional Paraphrase Model and Back".
 
-To get started, run setup.sh which will download the required files. Then run demo.sh to start training a model.
+The code is written in python and requires numpy, scipy, theano and the lasagne library.
 
-Note that code requires both Theano and Lasagne.
+To get started, run setup.sh which will download the required files. Then run demo.sh to start training a model. Check main/train.py for command line options.
 
 If you use our code for your work please cite:
 
